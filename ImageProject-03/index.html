@@ -46,7 +46,45 @@
              width="0.09" height="0.02" depth="19"
              color="#DFAD68">
       </a-box>
+<a-entity id="departure-lights">
+        <a-cylinder class="route-lamp" position="-4.9 0.045 -8.8"
+                    radius="0.15" height="0.06" color="#566071"></a-cylinder>
+        <a-cylinder class="route-lamp" position="0.65 0.045 -8.8"
+                    radius="0.15" height="0.06" color="#566071"></a-cylinder>
+        <a-cylinder class="route-lamp" position="-4.9 0.045 -11.7"
+                    radius="0.15" height="0.06" color="#566071"></a-cylinder>
+        <a-cylinder class="route-lamp" position="0.65 0.045 -11.7"
+                    radius="0.15" height="0.06" color="#566071"></a-cylinder>
+        <a-cylinder class="route-lamp" position="-4.9 0.045 -14.6"
+                    radius="0.15" height="0.06" color="#566071"></a-cylinder>
+        <a-cylinder class="route-lamp" position="0.65 0.045 -14.6"
+                    radius="0.15" height="0.06" color="#566071"></a-cylinder>
+      </a-entity>
 
+        <a-entity position="2.8 0 -8.8" rotation="0 -10 0">
+        <a-cylinder position="0 1.5 0"
+                    radius="0.10" height="3" color="#78848D"></a-cylinder>
+
+        <a-box position="0 3.15 0"
+               width="4.1" height="1.7" depth="0.18"
+               color="#183039"></a-box>
+
+        <a-box position="0 3.92 0.10"
+               width="3.9" height="0.055" depth="0.035"
+               material="shader: flat; color: #FFAB70"></a-box>
+
+        <a-text value="ROUTE 09  /  ORBITAL SERVICE"
+                position="0 3.62 0.11" align="center"
+                width="3.5" wrap-count="30" color="#A1DDD5"></a-text>
+
+        <a-text value="LAST STOP"
+                position="0 3.17 0.11" align="center"
+                width="3.65" wrap-count="10" color="#FFF1D5"></a-text>
+
+        <a-text id="station-status" value="DEPARTURE LANE CLOSED"
+                position="0 2.65 0.11" align="center"
+                width="3.45" wrap-count="23" color="#FFAB70"></a-text>
+      </a-entity>
 
       <!-- Temporary sky -->
       <a-sky src="assets/space-sky.jpg"></a-sky>
