@@ -7,7 +7,10 @@
   </head>
 
   <body>
-    <a-scene>
+    <a-scene
+  cursor__mouse="rayOrigin: mouse; fuse: false"
+  cursor__xrselect="rayOrigin: xrselect; fuse: false"
+  raycaster="objects: #station-pump">
       <a-assets>
         <a-asset-item
           id="car"
@@ -26,7 +29,8 @@
         rotation="0 45 0">
       </a-entity>
 
-      <a-entity
+            <a-entity
+        id="station-pump"
         gltf-model="#gas-pump"
         position="2 0 -6">
       </a-entity>
@@ -46,7 +50,7 @@
              width="0.09" height="0.02" depth="19"
              color="#DFAD68">
       </a-box>
-<a-entity id="departure-lights">
+<a-entity id="departure-lights" position="0 0 5">
         <a-cylinder class="route-lamp" position="-4.9 0.045 -8.8"
                     radius="0.15" height="0.06" color="#566071"></a-cylinder>
         <a-cylinder class="route-lamp" position="0.65 0.045 -8.8"
@@ -62,7 +66,7 @@
       </a-entity>
 
         <a-entity position="2.8 0 -8.8" rotation="0 -10 0">
-        <a-cylinder position="0 1.5 0"
+        <a-cylinder position="0 1.5 -0.2"
                     radius="0.10" height="3" color="#78848D"></a-cylinder>
 
         <a-box position="0 3.15 0"
@@ -104,5 +108,48 @@
 
       <a-camera position="0 1.6 3"></a-camera>
     </a-scene>
+        <script>
+      const pump = document.querySelector('#station-pump');
+      const sign = document.querySelector('#station-status');
+      const lamps = document.querySelectorAll('#departure-lights .route-lamp');
+
+      sign.setAttribute('value', 'LANE CLOSED / USE PUMP');
+
+      pump.addEventListener('click', function restorePower() {
+        sign.setAttribute('value', 'RESTORING POWER...');
+
+        lamps.forEach((lamp, index) => {
+          const pair = Math.floor(index / 2);
+          const delay = 450 + pair * 550;
+
+          window.setTimeout(() => {
+            lamp.setAttribute('material', {
+              shader: 'flat',
+              color: '#82FFE0'
+            });
+
+            if (index === lamps.length - 1) {
+              sign.setAttribute('value', 'ROUTE 09 OPEN');
+              sign.setAttribute('color', '#82FFE0');
+            }
+          }, delay);
+        });
+      }, { once: true });
+    </script>
   </body>
 </html>
+
+      <!--
+        ASSET CREDITS
+
+        1950s Sedan. From Grab3D. CC0.
+        https://grab3d.com/models/vehicles/1950s-sedan/
+
+        Gas Pump. From Grab3D. CC0.
+        https://grab3d.com/models/city/gas-pump/
+
+        Sky adapted from Deep Star Maps.
+        Credit: NASA/Goddard Space Flight Center Scientific Visualization Studio.
+        Edited in Photoshop and used as a 360-degree sky.
+        https://svs.gsfc.nasa.gov/3895/
+      -->
