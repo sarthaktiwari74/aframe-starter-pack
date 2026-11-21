@@ -12,6 +12,10 @@
   cursor__xrselect="rayOrigin: xrselect; fuse: false"
   raycaster="objects: #station-pump">
       <a-assets>
+       <a-asset-item
+       id="satellite"
+       src="assets/satellite.glb">
+      </a-asset-item>
         <a-asset-item
           id="car"
           src="assets/1950s-sedan.glb">
@@ -89,8 +93,30 @@
                 position="0 2.65 0.11" align="center"
                 width="3.45" wrap-count="23" color="#FFAB70"></a-text>
       </a-entity>
+       <a-entity
+        gltf-model="#satellite"
+       position="-7 5 -14"
+        rotation="10 20 -10"
+        scale="0.45 0.45 0.45"
 
-      <!-- Temporary sky -->
+        animation__float="
+         property: position;
+         from: -7 5 -14;
+         to: -7 5.6 -14;
+         dur: 3000;
+         dir: alternate;
+          loop: true;
+          easing: easeInOutSine"
+
+       animation__spin="
+         property: rotation;
+          from: 10 20 -10;
+          to: 10 380 -10;
+          dur: 40000;
+         loop: true;
+          easing: linear">
+</a-entity>
+      <!--sky -->
       <a-sky src="assets/space-sky.jpg"></a-sky>
 
       <!-- Lighting -->
@@ -135,6 +161,7 @@
           }, delay);
         });
       }, { once: true });
+      
     </script>
   </body>
 </html>
