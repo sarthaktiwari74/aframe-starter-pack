@@ -32,13 +32,21 @@
       </a-entity>
 
       <!-- Ground -->
-      <a-plane
-        position="0 -0.01 -5"
-        rotation="-90 0 0"
-        width="50"
-        height="50"
-        color="#777780">
-      </a-plane>
+         <a-box position="0 -0.2 -5.5"
+             width="12" height="0.4" depth="20"
+             color="#424655">
+      </a-box>
+
+      <!-- Faded lane markings frame the parked sedan. -->
+      <a-box position="-4.9 0.012 -5.5"
+             width="0.09" height="0.02" depth="19"
+             color="#DFAD68">
+      </a-box>
+      <a-box position="0.65 0.012 -5.5"
+             width="0.09" height="0.02" depth="19"
+             color="#DFAD68">
+      </a-box>
+
 
       <!-- Temporary sky -->
       <a-sky src="assets/space-sky.jpg"></a-sky>
