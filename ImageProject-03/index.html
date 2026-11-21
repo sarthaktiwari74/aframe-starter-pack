@@ -27,11 +27,29 @@
         </a-asset-item>
       </a-assets>
 
-         <a-entity
-        gltf-model="#car"
-        position="-2 0 -7"
-        rotation="0 45 0">
-      </a-entity>
+        <a-entity
+  id="departure-car"
+  gltf-model="#car"
+  position="-2 0 -7"
+  rotation="0 45 0"
+
+  animation__turn="
+    property: rotation;
+    from: 0 45 0;
+    to: 0 180 0;
+    dur: 1200;
+    easing: easeInOutSine;
+    startEvents: takeoff"
+
+  animation__launch="
+    property: position;
+    from: -2 0 -7;
+    to: -2 8 -35;
+    delay: 1200;
+    dur: 6000;
+    easing: easeInOutSine;
+    startEvents: takeoff">
+</a-entity>
 
             <a-entity
         id="station-pump"
@@ -154,10 +172,13 @@
               color: '#82FFE0'
             });
 
-            if (index === lamps.length - 1) {
-              sign.setAttribute('value', 'ROUTE 09 OPEN');
-              sign.setAttribute('color', '#82FFE0');
-            }
+           if (index === lamps.length - 1) {
+  sign.setAttribute('value', 'ROUTE 09 OPEN');
+  sign.setAttribute('color', '#82FFE0');
+
+  document.querySelector('#departure-car')
+    .emit('takeoff', null, false);
+}
           }, delay);
         });
       }, { once: true });
@@ -179,4 +200,7 @@
         Credit: NASA/Goddard Space Flight Center Scientific Visualization Studio.
         Edited in Photoshop and used as a 360-degree sky.
         https://svs.gsfc.nasa.gov/3895/
+
+        Satellite. From Grab3D. CC0.
+        https://grab3d.com/models/sci-fi/satellite/
       -->
